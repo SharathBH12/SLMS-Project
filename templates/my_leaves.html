@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Leave Applications | SLMS</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+            padding:40px 20px;
+            position:relative;
+            overflow-x:auto;
+        }
+
+        body::before,
+        body::after{
+            content:"";
+            position:absolute;
+            border-radius:50%;
+            filter:blur(90px);
+            opacity:.35;
+            z-index:-1;
+        }
+
+        body::before{
+            width:300px;
+            height:300px;
+            background:#60a5fa;
+            top:-100px;
+            left:-80px;
+        }
+
+        body::after{
+            width:350px;
+            height:350px;
+            background:#3b82f6;
+            bottom:-120px;
+            right:-100px;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:auto;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.2);
+            border-radius:20px;
+            padding:35px;
+            box-shadow:0 20px 45px rgba(0,0,0,.35);
+            animation:fadeUp .7s ease;
+        }
+
+        @keyframes fadeUp{
+
+            from{
+                opacity:0;
+                transform:translateY(40px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+
+        }
+
+        h2{
+            text-align:center;
+            color:#fff;
+            margin-bottom:30px;
+            font-size:32px;
+        }
+
+        .table-wrapper{
+            overflow-x:auto;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            min-width:850px;
+        }
+
+        th{
+            background:#2563eb;
+            color:#fff;
+            padding:16px;
+            font-size:16px;
+        }
+
+        td{
+            padding:15px;
+            text-align:center;
+            color:#fff;
+            background:rgba(255,255,255,.08);
+            border-bottom:1px solid rgba(255,255,255,.12);
+        }
+
+        tr:hover td{
+            background:rgba(255,255,255,.15);
+        }
+
+        .status{
+            padding:8px 16px;
+            border-radius:30px;
+            font-weight:600;
+            display:inline-block;
+        }
+
+        .approved{
+            background:#16a34a;
+            color:white;
+        }
+
+        .pending{
+            background:#f59e0b;
+            color:white;
+        }
+
+        .rejected{
+            background:#dc2626;
+            color:white;
+        }
+
+        .default{
+            background:#64748b;
+            color:white;
+        }
+
+        .empty-message{
+            color:#ffb4b4;
+            font-size:18px;
+            font-weight:bold;
+            padding:30px;
+        }
+
+        .actions{
+            margin-top:35px;
+            text-align:center;
+        }
+
+        .btn{
+            display:inline-block;
+            text-decoration:none;
+            background:#fff;
+            color:#1d4ed8;
+            padding:14px 28px;
+            border-radius:10px;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        .btn:hover{
+            background:#dbeafe;
+            transform:translateY(-3px);
+            box-shadow:0 12px 25px rgba(255,255,255,.25);
+        }
+
+        @media(max-width:768px){
+
+            .container{
+                padding:25px;
+            }
+
+            h2{
+                font-size:26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>📋 My Leave Applications</h2>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Leave Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for i in leaves %}
+
+                <tr>
+
+                    <td>{{ i.leave_type }}</td>
+
+                    <td>{{ i.start_date }}</td>
+
+                    <td>{{ i.end_date }}</td>
+
+                    <td>{{ i.reason }}</td>
+
+                    <td>
+
+                        {% if i.status == "Approved" %}
+                            <span class="status approved">{{ i.status }}</span>
+
+                        {% elif i.status == "Pending" %}
+                            <span class="status pending">{{ i.status }}</span>
+
+                        {% elif i.status == "Rejected" %}
+                            <span class="status rejected">{{ i.status }}</span>
+
+                        {% else %}
+                            <span class="status default">{{ i.status }}</span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="5" class="empty-message">
+
+                        No Leave Applications Found
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="actions">
+
+        <a href="/staff_dashboard/" class="btn">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

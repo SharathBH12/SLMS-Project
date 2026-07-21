@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard | SLMS</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+            position:relative;
+            overflow-x:hidden;
+        }
+
+        body::before,
+        body::after{
+            content:"";
+            position:absolute;
+            border-radius:50%;
+            filter:blur(90px);
+            opacity:.35;
+            z-index:-1;
+        }
+
+        body::before{
+            width:320px;
+            height:320px;
+            background:#60a5fa;
+            top:-120px;
+            left:-80px;
+        }
+
+        body::after{
+            width:360px;
+            height:360px;
+            background:#3b82f6;
+            bottom:-120px;
+            right:-100px;
+        }
+
+        /* Navigation */
+
+        nav{
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(18px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:18px 60px;
+        }
+
+        .logo{
+            color:#fff;
+            font-size:24px;
+            font-weight:bold;
+            letter-spacing:.5px;
+        }
+
+        .logout{
+            text-decoration:none;
+            color:#fff;
+            background:#ef4444;
+            padding:12px 22px;
+            border-radius:10px;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        .logout:hover{
+            background:#dc2626;
+            transform:translateY(-2px);
+        }
+
+        /* Main Content */
+
+        .container{
+            max-width:1100px;
+            margin:60px auto;
+            padding:0 20px;
+        }
+
+        .welcome{
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.2);
+            border-radius:20px;
+            padding:35px;
+            text-align:center;
+            color:white;
+            box-shadow:0 20px 40px rgba(0,0,0,.25);
+            margin-bottom:40px;
+        }
+
+        .welcome h2{
+            font-size:34px;
+            margin-bottom:10px;
+        }
+
+        .welcome p{
+            color:#dbeafe;
+            font-size:17px;
+        }
+
+        /* Dashboard Cards */
+
+        .dashboard{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+            gap:30px;
+        }
+
+        .card{
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.2);
+            border-radius:20px;
+            padding:35px;
+            color:white;
+            transition:.35s;
+            box-shadow:0 15px 35px rgba(0,0,0,.25);
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 25px 45px rgba(37,99,235,.25);
+        }
+
+        .icon{
+            font-size:55px;
+            margin-bottom:20px;
+        }
+
+        .card h3{
+            margin-bottom:15px;
+            font-size:26px;
+        }
+
+        .card p{
+            color:#dbeafe;
+            line-height:1.7;
+            margin-bottom:30px;
+        }
+
+        .btn{
+            display:inline-block;
+            text-decoration:none;
+            background:#fff;
+            color:#1d4ed8;
+            padding:13px 24px;
+            border-radius:10px;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        .btn:hover{
+            background:#dbeafe;
+            transform:translateY(-2px);
+        }
+
+        footer{
+            text-align:center;
+            color:#dbeafe;
+            padding:35px;
+            margin-top:30px;
+        }
+
+        @media(max-width:768px){
+
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:20px;
+            }
+
+            .welcome h2{
+                font-size:28px;
+            }
+
+            .dashboard{
+                grid-template-columns:1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <nav>
+
+        <div class="logo">
+            SLMS - Staff
+        </div>
+
+        <a href="/logout/" class="logout">
+            Logout
+        </a>
+
+    </nav>
+
+    <div class="container">
+
+        <div class="welcome">
+
+            <h2>
+                Welcome, {{ request.user.username }} 👋
+            </h2>
+
+            <p>
+                Manage your leave applications quickly and easily through the Staff Leave Management System.
+            </p>
+
+        </div>
+
+        <div class="dashboard">
+
+            <div class="card">
+
+                <div class="icon">📝</div>
+
+                <h3>Apply for Leave</h3>
+
+                <p>
+                    Submit a new leave request by providing the leave type, dates, and reason.
+                </p>
+
+                <a href="/leave/apply_leave/" class="btn">
+                    Apply Now
+                </a>
+
+            </div>
+
+            <div class="card">
+
+                <div class="icon">📋</div>
+
+                <h3>My Leave Status</h3>
+
+                <p>
+                    Track all your submitted leave requests and view their approval status.
+                </p>
+
+                <a href="/leave/my_leaves/" class="btn">
+                    View Applications
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+
+        © 2026 Staff Leave Management System | Staff Portal
+
+    </footer>
+
+</body>
+</html>

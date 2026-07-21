@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLMS - Staff Leave Management System</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+            overflow:hidden;
+            position:relative;
+        }
+
+        /* Background Circles */
+
+        body::before,
+        body::after{
+            content:"";
+            position:absolute;
+            border-radius:50%;
+            filter:blur(70px);
+            opacity:.35;
+        }
+
+        body::before{
+            width:300px;
+            height:300px;
+            background:#60a5fa;
+            top:-80px;
+            left:-80px;
+        }
+
+        body::after{
+            width:350px;
+            height:350px;
+            background:#3b82f6;
+            bottom:-100px;
+            right:-100px;
+        }
+
+        .container{
+            width:420px;
+            padding:45px 35px;
+            text-align:center;
+            border-radius:20px;
+            background:rgba(255,255,255,0.12);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.2);
+            box-shadow:0 15px 40px rgba(0,0,0,.3);
+            animation:fadeUp .8s ease;
+            z-index:1;
+        }
+
+        @keyframes fadeUp{
+            from{
+                opacity:0;
+                transform:translateY(40px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        .logo{
+            width:90px;
+            height:90px;
+            margin:auto;
+            border-radius:50%;
+            background:linear-gradient(135deg,#3b82f6,#2563eb);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            font-size:34px;
+            font-weight:bold;
+            margin-bottom:20px;
+            box-shadow:0 8px 20px rgba(37,99,235,.5);
+        }
+
+        h1{
+            color:#fff;
+            font-size:34px;
+            margin-bottom:10px;
+        }
+
+        p{
+            color:#dbeafe;
+            font-size:17px;
+            margin-bottom:35px;
+            line-height:1.6;
+        }
+
+        .buttons{
+            display:flex;
+            gap:15px;
+            justify-content:center;
+        }
+
+        .btn{
+            flex:1;
+            text-decoration:none;
+            padding:14px;
+            border-radius:10px;
+            font-size:17px;
+            font-weight:600;
+            transition:.35s;
+        }
+
+        .login{
+            background:#2563eb;
+            color:#fff;
+        }
+
+        .login:hover{
+            background:#1d4ed8;
+            transform:translateY(-4px);
+            box-shadow:0 10px 20px rgba(37,99,235,.4);
+        }
+
+        .register{
+            background:#fff;
+            color:#1e3a8a;
+        }
+
+        .register:hover{
+            background:#dbeafe;
+            transform:translateY(-4px);
+            box-shadow:0 10px 20px rgba(255,255,255,.3);
+        }
+
+        footer{
+            margin-top:35px;
+            color:#cbd5e1;
+            font-size:14px;
+        }
+
+        @media(max-width:500px){
+
+            .container{
+                width:90%;
+                padding:35px 25px;
+            }
+
+            .buttons{
+                flex-direction:column;
+            }
+
+            h1{
+                font-size:28px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="logo">SL</div>
+
+        <h1>SLMS</h1>
+
+        <p>
+            Welcome to the <strong>Staff Leave Management System</strong>.
+            Manage leave requests quickly, securely, and efficiently through a
+            simple and modern platform.
+        </p>
+
+        <div class="buttons">
+            <a href="login/" class="btn login">Login</a>
+            <a href="register/" class="btn register">Register</a>
+        </div>
+
+        <footer>
+            &copy; 2026 Sharath B H. All Rights Reserved.
+        </footer>
+
+    </div>
+
+</body>
+</html>

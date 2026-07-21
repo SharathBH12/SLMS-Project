@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLMS | Admin Dashboard</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        body{
+            background:#eef4ff;
+            min-height:100vh;
+        }
+
+        /* Navigation */
+
+        nav{
+            height:75px;
+            background:linear-gradient(90deg,#1e3a8a,#2563eb);
+            color:white;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:0 60px;
+            box-shadow:0 8px 20px rgba(0,0,0,.15);
+        }
+
+        nav h2{
+            font-size:28px;
+            letter-spacing:1px;
+        }
+
+        .logout{
+            text-decoration:none;
+            color:white;
+            background:#ef4444;
+            padding:12px 22px;
+            border-radius:10px;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        .logout:hover{
+            background:#dc2626;
+            transform:translateY(-2px);
+        }
+
+        /* Header */
+
+        .header{
+            text-align:center;
+            margin:40px 20px;
+        }
+
+        .header h1{
+            color:#1e3a8a;
+            font-size:38px;
+            margin-bottom:10px;
+        }
+
+        .header p{
+            color:#64748b;
+            font-size:18px;
+        }
+
+        /* Cards */
+
+        .dashboard{
+            max-width:1200px;
+            margin:40px auto;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+            gap:30px;
+            padding:0 25px 50px;
+        }
+
+        .card{
+            background:white;
+            border-radius:18px;
+            padding:30px;
+            box-shadow:0 12px 30px rgba(0,0,0,.08);
+            transition:.35s;
+            border-top:6px solid #2563eb;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 20px 40px rgba(37,99,235,.18);
+        }
+
+        .icon{
+            font-size:50px;
+            margin-bottom:15px;
+        }
+
+        .card h3{
+            color:#1e3a8a;
+            margin-bottom:15px;
+            font-size:24px;
+        }
+
+        .card p{
+            color:#64748b;
+            line-height:1.6;
+            margin-bottom:25px;
+        }
+
+        .btn{
+            display:inline-block;
+            text-decoration:none;
+            padding:12px 22px;
+            background:#2563eb;
+            color:white;
+            border-radius:10px;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        .btn:hover{
+            background:#1d4ed8;
+            transform:translateY(-2px);
+        }
+
+        /* Footer */
+
+        footer{
+            text-align:center;
+            padding:25px;
+            color:#64748b;
+            font-size:15px;
+        }
+
+        @media(max-width:768px){
+
+            nav{
+                flex-direction:column;
+                height:auto;
+                padding:20px;
+                gap:15px;
+            }
+
+            .header h1{
+                font-size:30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <nav>
+
+        <h2>SLMS Admin</h2>
+
+        <a href="/logout/" class="logout">
+            Logout
+        </a>
+
+    </nav>
+
+    <div class="header">
+
+        <h1>Admin Dashboard</h1>
+
+        <p>
+            Welcome to the Staff Leave Management System Administration Panel.
+            Manage staff members and leave requests efficiently.
+        </p>
+
+    </div>
+
+    <div class="dashboard">
+
+        <div class="card">
+
+            <div class="icon">📋</div>
+
+            <h3>Leave Applications</h3>
+
+            <p>
+                View, review and manage all leave requests submitted by staff members.
+            </p>
+
+            <a href="{% url 'view_leave' %}" class="btn">
+                View Applications
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">👥</div>
+
+            <h3>Staff Management</h3>
+
+            <p>
+                Access the list of registered staff members and manage user accounts.
+            </p>
+
+            <a href="{% url 'manage_staff' %}" class="btn">
+                Manage Staff
+            </a>
+
+        </div>
+
+    </div>
+
+    <footer>
+
+        © 2026 Staff Leave Management System | Admin Panel
+
+    </footer>
+
+</body>
+</html>

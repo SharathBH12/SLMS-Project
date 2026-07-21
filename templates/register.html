@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLMS Register</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+            overflow:hidden;
+            position:relative;
+        }
+
+        body::before,
+        body::after{
+            content:"";
+            position:absolute;
+            border-radius:50%;
+            filter:blur(90px);
+            opacity:.35;
+        }
+
+        body::before{
+            width:320px;
+            height:320px;
+            background:#60a5fa;
+            top:-120px;
+            left:-80px;
+        }
+
+        body::after{
+            width:350px;
+            height:350px;
+            background:#3b82f6;
+            bottom:-120px;
+            right:-80px;
+        }
+
+        .container{
+            width:430px;
+            padding:40px;
+            border-radius:20px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.2);
+            box-shadow:0 20px 40px rgba(0,0,0,.35);
+            animation:fadeUp .8s ease;
+            z-index:1;
+        }
+
+        @keyframes fadeUp{
+            from{
+                opacity:0;
+                transform:translateY(40px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        .logo{
+            width:80px;
+            height:80px;
+            margin:auto;
+            margin-bottom:20px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#2563eb,#1d4ed8);
+            color:#fff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:30px;
+            font-weight:bold;
+            box-shadow:0 10px 25px rgba(37,99,235,.4);
+        }
+
+        h1{
+            color:#fff;
+            text-align:center;
+            margin-bottom:8px;
+            font-size:30px;
+        }
+
+        h2{
+            text-align:center;
+            color:#dbeafe;
+            font-size:16px;
+            font-weight:400;
+            margin-bottom:30px;
+        }
+
+        form{
+            display:flex;
+            flex-direction:column;
+        }
+
+        label{
+            color:#fff;
+            font-weight:600;
+            margin-bottom:8px;
+        }
+
+        input,
+        select{
+            width:100%;
+            padding:14px;
+            margin-bottom:20px;
+            border:none;
+            outline:none;
+            border-radius:10px;
+            background:rgba(255,255,255,.18);
+            color:#fff;
+            font-size:15px;
+            transition:.3s;
+        }
+
+        input::placeholder{
+            color:#dbeafe;
+        }
+
+        input:focus,
+        select:focus{
+            background:rgba(255,255,255,.25);
+            box-shadow:0 0 0 3px rgba(255,255,255,.2);
+        }
+
+        select option{
+            color:#000;
+        }
+
+        button{
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            background:#fff;
+            color:#1d4ed8;
+            font-size:17px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            transform:translateY(-3px);
+            background:#dbeafe;
+            box-shadow:0 12px 25px rgba(255,255,255,.25);
+        }
+
+        .links{
+            margin-top:25px;
+            text-align:center;
+        }
+
+        .links p{
+            color:#dbeafe;
+            margin:12px 0;
+        }
+
+        .links a{
+            color:#fff;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .links a:hover{
+            text-decoration:underline;
+        }
+
+        @media(max-width:500px){
+
+            .container{
+                width:90%;
+                padding:30px;
+            }
+
+            h1{
+                font-size:26px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="logo">SL</div>
+
+        <h1>Create Account</h1>
+        <h2>Staff Leave Management System</h2>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter your username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+
+            <label>Select Role</label>
+            <select name="role" required>
+                <option value="">Choose Role</option>
+                <option value="staff">Staff</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <div class="links">
+
+            <p>
+                Already have an account?
+                <a href="/login/">Login</a>
+            </p>
+
+            <p>
+                <a href="/">← Back to Home</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

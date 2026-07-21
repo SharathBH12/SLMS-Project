@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Staff | SLMS</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+            overflow:hidden;
+            position:relative;
+        }
+
+        body::before,
+        body::after{
+            content:"";
+            position:absolute;
+            border-radius:50%;
+            filter:blur(90px);
+            opacity:.35;
+        }
+
+        body::before{
+            width:320px;
+            height:320px;
+            background:#60a5fa;
+            top:-120px;
+            left:-80px;
+        }
+
+        body::after{
+            width:360px;
+            height:360px;
+            background:#3b82f6;
+            bottom:-120px;
+            right:-100px;
+        }
+
+        .container{
+            width:430px;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.2);
+            border-radius:20px;
+            box-shadow:0 20px 45px rgba(0,0,0,.35);
+            animation:fadeUp .8s ease;
+            z-index:1;
+        }
+
+        @keyframes fadeUp{
+
+            from{
+                opacity:0;
+                transform:translateY(40px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+
+        }
+
+        .logo{
+            width:80px;
+            height:80px;
+            margin:auto;
+            margin-bottom:20px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#2563eb,#1d4ed8);
+            color:white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:30px;
+            font-weight:bold;
+            box-shadow:0 10px 25px rgba(37,99,235,.4);
+        }
+
+        h1{
+            text-align:center;
+            color:white;
+            margin-bottom:10px;
+            font-size:30px;
+        }
+
+        .subtitle{
+            text-align:center;
+            color:#dbeafe;
+            margin-bottom:30px;
+            font-size:16px;
+        }
+
+        form{
+            display:flex;
+            flex-direction:column;
+        }
+
+        label{
+            color:white;
+            font-weight:600;
+            margin-bottom:8px;
+        }
+
+        input{
+            width:100%;
+            padding:14px;
+            margin-bottom:20px;
+            border:none;
+            outline:none;
+            border-radius:10px;
+            background:rgba(255,255,255,.18);
+            color:white;
+            font-size:15px;
+            transition:.3s;
+        }
+
+        input::placeholder{
+            color:#dbeafe;
+        }
+
+        input:focus{
+            background:rgba(255,255,255,.25);
+            box-shadow:0 0 0 3px rgba(255,255,255,.2);
+        }
+
+        button{
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            background:white;
+            color:#1d4ed8;
+            font-size:17px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#dbeafe;
+            transform:translateY(-3px);
+            box-shadow:0 12px 25px rgba(255,255,255,.25);
+        }
+
+        .back{
+            margin-top:25px;
+            text-align:center;
+        }
+
+        .back a{
+            color:white;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .back a:hover{
+            text-decoration:underline;
+        }
+
+        @media(max-width:500px){
+
+            .container{
+                width:90%;
+                padding:30px;
+            }
+
+            h1{
+                font-size:26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            SL
+        </div>
+
+        <h1>Add Staff</h1>
+
+        <p class="subtitle">
+            Create a new staff account for the Staff Leave Management System.
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button type="submit">
+
+                Add Staff Member
+
+            </button>
+
+        </form>
+
+        <div class="back">
+
+            <a href="{% url 'manage_staff' %}">
+
+                ← Back to Manage Staff
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
